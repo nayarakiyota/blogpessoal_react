@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+:root {
+    --color-radical-red-50: #fff0f3;
+    --color-radical-red-100: #ffe2e9;
+    --color-radical-red-200: #ffcad9;
+    --color-radical-red-300: #ff9fb9;
+    --color-radical-red-400: #ff6994;
+    --color-radical-red-500: #ff1a62;
+    --color-radical-red-600: #ed1160;
+    --color-radical-red-700: #c80852;
+    --color-radical-red-800: #a8094c;
+    --color-radical-red-900: #8f0c47;
+    --color-radical-red-950: #500122;
+}
