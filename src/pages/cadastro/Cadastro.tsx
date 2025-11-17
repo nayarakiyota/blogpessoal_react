@@ -31,7 +31,7 @@ function Cadastro() {
   }, [usuario])
 
   function retornar(){
-    navigate("/login");
+    navigate("/");
   }
 
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>){
@@ -156,7 +156,7 @@ function Cadastro() {
             </button>
             <button
               type="submit"
-              className="rounded text-white bg-blue-300
+              className="rounded text-white bg-blue-400
                        hover:bg-blue-700 w-1/2 py-2
                        flex justify-center"
             >
