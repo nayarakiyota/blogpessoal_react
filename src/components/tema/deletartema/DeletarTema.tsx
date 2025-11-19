@@ -75,15 +75,15 @@ function DeletarTema() {
 
     return (
         <div className="container w-1/3 mx-auto">
-            <h1 className="text-4xl text-center my-4">Deletar tema</h1>
-            <p className="text-center font-semibold mb-4">
+            <h1 className="text-4xl text-center my-4 text-(--color-radical-red-800)">Deletar tema</h1>
+            <p className="text-center font-semibold mb-4 text-(--color-radical-red-800)">
                 Você tem certeza de que deseja apagar o tema a seguir?</p>
             <div className="border flex flex-col rounded-2xl overflow-hidden justify-between">
                 <header
                     className="py-2 px-6 bg-(--color-radical-red-600) text-white font-bold text-2xl">
                     Tema
                 </header>
-                <p className="p-8 text-3xl bg-(--color-radical-red-200) h-full">{tema.descricao}</p>
+                <p className="p-8 text-3xl bg-(--color-radical-red-100) text-(--color-radical-red-900) h-full">{tema.descricao}</p>
                 <div className="flex">
                     <button className="text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2"
                         onClick={retornar}
