@@ -86,12 +86,13 @@ function DeletarPostagem() {
                     Postagem
                 </header>
                 <div className="p-4 bg-(--color-radical-red-100)">
-                    <p className='text-xl h-full text-(--color-radical-red-900)'>Título da Postagem</p>
-                    <p className="text-(--color-radical-red-900)">Texto da Postagem</p>
+                    <p className='text-xl h-full text-(--color-radical-red-900)'>{postagem.titulo}</p>
+                    <p className="text-(--color-radical-red-900)">{postagem.texto}</p>
                 </div>
                 <div className="flex">
                     <button
-                        className='text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2'>
+                        className='text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2'
+                        onClick={retornar}>
                         Não
                     </button>
                     <button
