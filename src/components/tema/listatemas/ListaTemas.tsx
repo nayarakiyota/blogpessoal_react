@@ -5,6 +5,7 @@ import type Tema from "../../../models/Tema";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { buscar } from "../../../services/Service";
 import { SyncLoader } from "react-spinners";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function ListaTemas() {
 
@@ -18,8 +19,8 @@ function ListaTemas() {
     const token = usuario.token;
 
     useEffect(() => {
-        if (token === ''){
-            alert('Você precisa estar logado!');
+        if (token === '') {
+            ToastAlerta('Você precisa estar logado!', 'info');
             navigate('/')
         }
     }, [token])
@@ -73,7 +74,7 @@ function ListaTemas() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 " >
                         {
                             temas.map((tema) => (
-                                <CardTema key= {tema.id} tema={tema}/>
+                                <CardTema key={tema.id} tema={tema} />
                             ))
                         }
 

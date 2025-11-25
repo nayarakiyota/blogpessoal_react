@@ -3,6 +3,7 @@ import type Usuario from "../../models/Usuario";
 import { useNavigate } from "react-router-dom";
 import { cadastrarUsuario } from "../../services/Service";
 import { ClipLoader } from "react-spinners";
+import { ToastAlerta } from "../../utils/ToastAlerta";
 
 function Cadastro() {
 
@@ -17,52 +18,52 @@ function Cadastro() {
 
   // Guardar os dados do usuário
   const [usuario, setUsuario] = useState<Usuario>({
-      id: 0,
-      nome: "",
-      usuario: "",
-      senha: "",
-      foto: ""
+    id: 0,
+    nome: "",
+    usuario: "",
+    senha: "",
+    foto: ""
   })
 
-  useEffect( () => {
-    if(usuario.id !== 0){
+  useEffect(() => {
+    if (usuario.id !== 0) {
       retornar();
     }
   }, [usuario])
 
-  function retornar(){
+  function retornar() {
     navigate("/");
   }
 
-  function atualizarEstado(e: ChangeEvent<HTMLInputElement>){
+  function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
     setUsuario({
-        ...usuario,
-        [e.target.name]: e.target.value
+      ...usuario,
+      [e.target.name]: e.target.value
     })
   }
 
-  function handleConfirmarSenha(e: ChangeEvent<HTMLInputElement>){
+  function handleConfirmarSenha(e: ChangeEvent<HTMLInputElement>) {
     setConfirmarSenha(e.target.value);
   }
 
-  async function cadastrarNovoUsuario(e: FormEvent<HTMLFormElement>){
+  async function cadastrarNovoUsuario(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     setIsLoading(true);
 
-    if(confirmarSenha === usuario.senha && usuario.senha.length >= 8){
+    if (confirmarSenha === usuario.senha && usuario.senha.length >= 8) {
 
-        try{
+      try {
 
-          await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
-          alert('Usuário cadastrado com sucesso!');
+        await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
+        ToastAlerta('Usuário cadastrado com sucesso!', 'sucesso');
 
-        }catch(error){
-          alert('Erro ao cadastrar o usuário!');
-        }
+      } catch (error) {
+        ToastAlerta('Erro ao cadastrar o usuário!', 'erro');
+      }
 
-    }else{
-      alert("Dados do usuário inconsistentes! Verifique as informações do cadastro.")
+    } else {
+      ToastAlerta("Dados do usuário inconsistentes! Verifique as informações do cadastro.", "info")
       setUsuario({
         ...usuario,
         senha: ''
@@ -83,7 +84,7 @@ function Cadastro() {
       w-full min-h-screen bg-cover bg-center"
         ></div>
         <form className="flex justify-center items-center flex-col w-2/3 gap-3"
-            onSubmit ={cadastrarNovoUsuario}
+          onSubmit={cadastrarNovoUsuario}
         >
           <h2 className="text-(--color-radical-red-900) text-5xl">Cadastrar</h2>
           <div className="flex flex-col w-full">
@@ -163,17 +164,17 @@ function Cadastro() {
               {
                 isLoading ?
 
-                <ClipLoader
+                  <ClipLoader
                     color="#ffffff"
                     size={24}
-                />
+                  />
 
-                :
+                  :
 
-                <span>Cadastrar</span>
+                  <span>Cadastrar</span>
 
               }
-              
+
             </button>
           </div>
         </form >
